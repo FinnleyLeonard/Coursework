@@ -12,23 +12,22 @@ import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@Path("beat/")
+@Path("premadebeats/")
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 @Produces(MediaType.APPLICATION_JSON)
 
-public class Beat {
+public class PremadeBeats {
     @GET
     @Path("list")
     public String beatList() {
-        System.out.println("Invoked Beat.beatList()");
-        JSONArray response = new JSONArray();
+        System.out.println("Invoked premadebeats.premadebeatsList()");
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM Beat");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT * FROM PremadeBeatsORDER BY CONVERT(datetime, BeatDate, 103) ASC");
             ResultSet results = ps.executeQuery();
             while (results.next() == true) {
                 JSONObject row = new JSONObject();
                 row.put("beatID", results.getInt(1));
-                row.put("BeatURL", results.getString(2));
+                row.put("BeatDate", results.getDate(2));
                 response.add(row);
             }
             return response.toString();
