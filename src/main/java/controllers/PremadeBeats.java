@@ -1,3 +1,4 @@
+/*
 package controllers;
 
 import org.json.simple.JSONArray;
@@ -11,7 +12,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 @Path("premadebeats/")
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 @Produces(MediaType.APPLICATION_JSON)
@@ -38,3 +38,4 @@ public class PremadeBeats {
     }
 
 }
+*/
