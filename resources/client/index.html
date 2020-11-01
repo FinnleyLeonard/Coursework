@@ -5,17 +5,63 @@
     <title>Beat Maker</title>
     <!-- Include tone.js library -->
     <script src="https://unpkg.com/tone"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./css/stylesheet.css" />
   </head>
   <body>
     <h1>keyboard init</h1>
-    <div id="piano"></div>
+    <div class="sequencer">
+      <div class="kick-track">
+        <div class="controls">
+          <h1>Kick</h1>
+          <button data-track="0" class="kick-mute"><i class="fas fa-volume-mute"></i></button>
+          <select name="kick-select" id="kick-select">
+            <option value="./sounds/kick-classic.wav">Classik Kick</option>
+            <option value="./sounds/kick-808.wav">808 Kick</option>
+            <option value="./sounds/kick-big.wav">Big Kick</option>
+            <option value="./sounds/kick-heavy.wav">Heavy Kick</option>
+            <option value="./sounds/kick-tron.wav">Tron Kick</option>
+          </select>
+        </div>
+          <div class="kick">
+            <div class="pad kick-pad b0"></div>
+            <div class="pad kick-pad b1"></div>
+            <div class="pad kick-pad b2"></div>
+            <div class="pad kick-pad b3"></div>
+            <div class="pad kick-pad b4"></div>
+            <div class="pad kick-pad b5"></div>
+            <div class="pad kick-pad b6"></div>
+            <div class="pad kick-pad b7"></div>
+          </div>
+      </div>
 
-    <!-- Include my script -->
-    <script type="text/javascript" src="./js/main.js"></script>
+      <div class="snare-track">
+        <div class="controls">
+          <h1>Snare</h1>
+          <button data-track="0" class="snare-mute"><i class="fas fa-volume-mute"></i></button>
+          <select name="snare-select" id="snare-select">
+            <option value="./sounds/snare-noise.wav">Noise Snare</option>
+            <option value="./sounds/snare-808.wav">808 Snare</option>
+            <option value="./sounds/snare-big.wav">Big Snare</option>
+            <option value="./sounds/snare-lofi01.wav">Lofi Snare</option>
+            <option value="./sounds/snare-tape.wav">Tape Snare</option>
+          </select>
+        </div>
+        <div class="snare">
+          <div class="pad snare-pad b0"></div>
+          <div class="pad snare-pad b1"></div>
+          <div class="pad snare-pad b2"></div>
+          <div class="pad snare-pad b3"></div>
+          <div class="pad snare-pad b4"></div>
+          <div class="pad snare-pad b5"></div>
+          <div class="pad snare-pad b6"></div>
+          <div class="pad snare-pad b7"></div>
+        </div>
+      </div>
+    </div>
+    <div id="piano"></div>
+    <script type="text/javascript" src="./js/Piana.js"></script>
+    <script type="text/javascript" src="./js/Beatmaker.js"></script>
   </body>
 </html>
