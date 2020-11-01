@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  margin: 50px;
+}
+
+h1 {
+  padding: 0;
+  margin: 0 0 50px 0;
+  color: #222;
+}
+
+.pressed {
+  background: rgba(20, 7, 117, 0.2);
+  transition-duration: 0.5s;
+}
+
+.pianoinner {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.pianoinner > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px;
+}
+
+.note {
+  font-weight: bold;
+  font-size: 32px;
+  color: #140775;
+}
+
+.key {
+  margin-top: 5px;
+  color: #777;
+}
