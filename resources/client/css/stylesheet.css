@@ -1,18 +1,22 @@
+
+/* other colours to be used for pads  #8386d3  #936cca  #9059c4 */
 * {
-  box-sizing: border-box;
   font-family: "Inter";
+  padding:0;
+  margin=0;
+  box-sizing: border-box;
+}
+i,
+svg {
+  pointer-events: none;
 }
 
-body {
-  margin: 50px;
-}
 
 h1 {
   padding: 0;
-  margin: 0 0 50px 0;
+  margin: 0 0 20px 0;
   color: #222;
 }
-
 .pressed {
   background: rgba(20, 7, 117, 0.2);
   transition-duration: 0.5s;
@@ -43,4 +47,70 @@ h1 {
 .key {
   margin-top: 5px;
   color: #777;
+}
+
+.sequencer {
+  display: flex;
+  min-height: 1000px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.kick-pad{
+    width:80px;
+    height:80px;
+    margin: 16px 8px;
+    cursor: pointer;
+    background: #8abadb
+}
+.snare-pad{
+    width:80px;
+    height:80px;
+    margin: 16px 8px;
+    cursor: pointer;
+    background: #869fdb
+}
+ .kick-track, .snare-track{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+
+ }
+ .kick, .snare{
+     display:flex;
+ }
+
+.controls {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 32px;
+}
+
+.controls button {
+    padding:2px;
+    background: #e3e3e3;
+    cursor: pointer;
+    transition all 1s ease;
+}
+
+.pad {
+    transition all 0.5s ease;
+}
+
+.kick-pad.active{
+
+    background: #6a8da5
+}
+.snare-pad.active{
+
+    background: #6a7ca7
+}
+
+.play{
+    padding: 16px 32px
+    background: #e3e3e3;
+    cursor: pointer;
+    margin:48;
 }
