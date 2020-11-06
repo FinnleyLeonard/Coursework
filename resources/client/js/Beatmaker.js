@@ -4,8 +4,9 @@ class beatMaker{
     this.pads = document.querySelectorAll('.pad');
     this.kickAudio = document.querySelector('.kick-sound');
     this.snareAudio = document.querySelector('.snare-sound');
+    this.hihatAudio = document.querySelector('.hihat-sound');
     this.pointer = 0;
-    this.tempo = 150;
+    this.tempo = 140;
     this.playBeat = document.querySelector('.play');
     }
     activePad(){
@@ -18,14 +19,15 @@ class beatMaker{
         const activeBars = document.querySelectorAll(`.b${step}`);
         //loop the pads
         activeBars.forEach(bar => {
-            bar.style.animation =  `playTrack 0.3s alternate ease-in-out 2`;
+            bar.style.animation =  `playTrack 0.5s alternate ease 1`;
             //checks pads active
             if (bar.classList.contains("active")){
-                if (bar.classList.contains("kick-pad"))
-                    this.kickAudio.play();
-                if (bar.classList.contains("snare-pad"))
-                    this.snareAudio.play()
-
+                if (bar.classList.contains("kick-pad")){
+                    this.kickAudio.play();}
+                if (bar.classList.contains("snare-pad")){
+                    this.snareAudio.play();}
+                if (bar.classList.contains("hihat-pad")){
+                    this.hihatAudio.play();}
             }
         });
 
@@ -41,7 +43,6 @@ class beatMaker{
 }
 
 const BeatMaker = new beatMaker();
-
 BeatMaker.pads.forEach(pad => {
   pad.addEventListener('click', BeatMaker.activePad);
   pad.addEventListener('animationend', function() {this.style.animation = ""});

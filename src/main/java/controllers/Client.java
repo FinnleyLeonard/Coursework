@@ -31,6 +31,13 @@ public class Client {
     }
 
     @GET
+    @Path("sound/{path}")
+    @Produces({"sound/wav"})
+    public byte[] getSoundFile(@PathParam("path") String path) {
+        return getFile("client/sound/" + path);
+    }
+
+    @GET
     @Path("lib/{path}")
     @Produces({"text/javascript"})
     public byte[] getJavaScriptLibraryFile(@PathParam("path") String path) {

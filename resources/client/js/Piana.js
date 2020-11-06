@@ -1,4 +1,5 @@
 // Create a synth
+
 const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 // Get piano table & setup var that will contain html
 let pianoHTML = "";

@@ -3,7 +3,7 @@
 * {
   font-family: "Inter";
   padding:0;
-  margin=0;
+  margin:0;
   box-sizing: border-box;
 }
 i,
@@ -71,14 +71,21 @@ h1 {
     cursor: pointer;
     background: #869fdb
 }
- .kick-track, .snare-track{
+.hiht-pad {
+    width: 80px;
+    height: 80px;
+    margin: 16px 8px;
+    cursor: pointer;
+    background: #8386d3
+}
+ .kick-track, .snare-track, .hihat-track{
     display:flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 80px;
 
  }
- .kick, .snare{
+ .kick, .snare, .hihat{
      display:flex;
  }
 
@@ -92,11 +99,11 @@ h1 {
     padding:2px;
     background: #e3e3e3;
     cursor: pointer;
-    transition all 1s ease;
+    transition: all 1s ease;
 }
 
 .pad {
-    transition all 0.5s ease;
+    transition: all 0.5s ease;
 }
 .kick-pad.active{
 
@@ -105,6 +112,9 @@ h1 {
 .snare-pad.active{
 
     background: #6a7ca7
+}
+.hihat-pad.active{
+    background: #515385
 }
 select {
   padding: 1rem;

@@ -63,10 +63,37 @@
           <div class="pad snare-pad b7"></div>
         </div>
       </div>
+
+      <div class="hihat-track">
+        <div class="controls">
+          <h1>Snare</h1>
+          <button data-track="1" class="mute hihat-volume">
+            <i class="fas fa-volume-mute"></i>
+          </button>
+          <select name="hihat-select" id="hihat-select">
+            <option value="./sound/hihat-808.wav">Noise Snare</option>
+            <option value="./sound/hihat-plain.wav">808 Snare</option>
+            <option value="./sound/hihat-electro.wav">Big Snare</option>
+            <option value="./sound/hihat-analog.wav">Lofi Snare</option>
+            <option value="./sound/hihat-ring.wav">Tape Snare</option>
+          </select>
+        </div>
+        <div class="hihat">
+          <div class="pad hihat-pad b0"></div>
+          <div class="pad hihat-pad b1"></div>
+          <div class="pad hihat-pad b2"></div>
+          <div class="pad hihat-pad b3"></div>
+          <div class="pad hihat-pad b4"></div>
+          <div class="pad hihat-pad b5"></div>
+          <div class="pad hihat-pad b6"></div>
+          <div class="pad hihat-pad b7"></div>
+        </div>
+      </div>
       <button class="play">Play</button>
     </div>
-    <audio class="kick-sound" scr="./sound/kick-classic"></audio>
-    <audio class="snare-sound" scr="./sound/kick-noise"></audio>
+    <audio class="kick-sound" src="./sound/kick-classic.wav"></audio>
+    <audio class="snare-sound" src="./sound/snare-noise.wav"></audio>
+    <audio class="hihat-sound" src="./sound/hihat-808.wav"></audio>
     <div id="piano"></div>
     <script type="text/javascript" src="./js/Piana.js"></script>
     <script type="text/javascript" src="./js/Beatmaker.js"></script>
