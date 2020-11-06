@@ -98,7 +98,6 @@ h1 {
 .pad {
     transition all 0.5s ease;
 }
-
 .kick-pad.active{
 
     background: #6a8da5
@@ -107,10 +106,16 @@ h1 {
 
     background: #6a7ca7
 }
+select {
+  padding: 1rem;
+  font-size: 1rem;
+}
 
-.play{
-    padding: 16px 32px
-    background: #e3e3e3;
-    cursor: pointer;
-    margin:48;
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
