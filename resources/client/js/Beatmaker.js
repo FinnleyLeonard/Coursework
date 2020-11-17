@@ -8,6 +8,7 @@ class beatMaker{
     this.pointer = 0;
     this.tempo = 140;
     this.playBeat = document.querySelector('.play');
+    this.isPlaying = null;
     }
     activePad(){
         this.classList.toggle("active");
@@ -19,14 +20,18 @@ class beatMaker{
         const activeBars = document.querySelectorAll(`.b${step}`);
         //loop the pads
         activeBars.forEach(bar => {
-            bar.style.animation =  `playTrack 0.5s alternate ease 1`;
+            bar.style.animation =  `playTrack 0.5s alternate ease 2`;
             //checks pads active
             if (bar.classList.contains("active")){
                 if (bar.classList.contains("kick-pad")){
+                    this.kickAudio.currentTime = 0;
                     this.kickAudio.play();}
+
                 if (bar.classList.contains("snare-pad")){
+                    this.snareAudio.currentTime = 0;
                     this.snareAudio.play();}
                 if (bar.classList.contains("hihat-pad")){
+                    this.hihatAudio.currentTime = 0;
                     this.hihatAudio.play();}
             }
         });
@@ -36,9 +41,26 @@ class beatMaker{
     startBeatMaker(){
         console.log("pog3");
         const interval = (60/this.tempo) * 1000;
-        setInterval(() => {
+        //playing check
+        if(!this.isPlaying){
+        this.isPlaying = setInterval(() => {
             this.repeater();
         }, interval);
+        } else {
+        //remove interval
+        clearInterval(this.isPlaying);
+        this.isPlaying = null;
+        }
+    }
+    ppBttnUpdt(){
+        console.log("runnin methord")
+        if(!this.isPlaying) {
+            this.playBeat.innerText = "Pause";
+            this.playBeat.classList.add("active");
+        } else {
+            this.playBeat.innerText = "Play";
+            this.playBeat.classList.remove("active");
+        }
     }
 }
 
@@ -49,6 +71,7 @@ BeatMaker.pads.forEach(pad => {
   console.log("pog4");
 });
 BeatMaker.playBeat.addEventListener('click', function() {
+  BeatMaker.ppBttnUpdt();
   BeatMaker.startBeatMaker();
   console.log("pog5");
 });
