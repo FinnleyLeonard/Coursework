@@ -5,10 +5,14 @@ class beatMaker{
     this.kickAudio = document.querySelector('.kick-sound');
     this.snareAudio = document.querySelector('.snare-sound');
     this.hihatAudio = document.querySelector('.hihat-sound');
+    this.currentKick = './sound/kick-classic.wav';
+    this.currentSnare = './sound/snare-noise.wav';
+    this.currentHihat = './sound/hihat-808.wav';
     this.pointer = 0;
-    this.tempo = 140;
+    this.tempo = 200;
     this.playBeat = document.querySelector('.play');
     this.isPlaying = null;
+    this.selects = document.querySelectorAll('select');
     }
     activePad(){
         this.classList.toggle("active");
@@ -62,9 +66,27 @@ class beatMaker{
             this.playBeat.classList.remove("active");
         }
     }
+    changeSound(){
+        const soundName = e.target.name;
+        const soundValue = e.target.value;
+        switch(selectionName){
+            case "kick-select":
+                this.kickAudio.src = selectionValue;
+                break;
+            case "snare-select":
+                this.snareAudio.src = selectionValue;
+                break;
+            case "hihat-select":
+                this.hihatAudio.src = selectionValue;
+                break;
+        }
+    }
 }
 
 const BeatMaker = new beatMaker();
+
+//event listners
+
 BeatMaker.pads.forEach(pad => {
   pad.addEventListener('click', BeatMaker.activePad);
   pad.addEventListener('animationend', function() {this.style.animation = ""});
@@ -74,4 +96,10 @@ BeatMaker.playBeat.addEventListener('click', function() {
   BeatMaker.ppBttnUpdt();
   BeatMaker.startBeatMaker();
   console.log("pog5");
+});
+
+BeatMaker.selects.forEach(select => {
+    select.addEventListener('change', function(){
+        BeatMaker.changeSound();
+    });
 });
