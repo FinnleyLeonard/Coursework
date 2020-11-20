@@ -1,5 +1,5 @@
 
-/* other colours to be used for pads  #8386d3  #936cca  #9059c4 */
+/* other colours to be used for pads  #936cca  #9059c4 */
 * {
   font-family: "Inter";
   padding:0;
@@ -78,21 +78,29 @@ h1 {
     cursor: pointer;
     background: #8386d3
 }
- .kick-track, .snare-track, .hihat-track{
+.tom-pad{
+    width: 80px;
+    height: 80px;
+    margin: 16px 8px;
+    cursor: pointer;
+    background: #936cca
+}
+ .kick-track, .snare-track, .hihat-track, .tom-track{
     display:flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 80px;
 
  }
- .kick, .snare, .hihat{
+ .kick, .snare, .hihat, .tom{
      display:flex;
  }
 
 .controls {
   justify-content: space-between;
   align-items: center;
-  margin: 0px 32px;
+    width: 250px;
+  margin: 0px;
 }
 
 .controls button {
@@ -115,6 +123,9 @@ h1 {
 }
 .hihat-pad.active{
     background: #515385
+}
+.tom-pad.active{
+    background: #3e2f52
 }
 select {
   padding: 1rem;

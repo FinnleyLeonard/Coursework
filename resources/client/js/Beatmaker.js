@@ -5,9 +5,11 @@ class beatMaker{
     this.kickAudio = document.querySelector('.kick-sound');
     this.snareAudio = document.querySelector('.snare-sound');
     this.hihatAudio = document.querySelector('.hihat-sound');
-    this.currentKick = './sound/kick-classic.wav';
-    this.currentSnare = './sound/snare-noise.wav';
+    this.tomAudio = document.querySelector('.tom-sound');
+    this.currentKick = './sound/kick-808.wav';
+    this.currentSnare = './sound/snare-808.wav';
     this.currentHihat = './sound/hihat-808.wav';
+    this.currentTom = './sound/tom-808.wav';
     this.pointer = 0;
     this.tempo = 200;
     this.playBeat = document.querySelector('.play');
@@ -37,6 +39,9 @@ class beatMaker{
                 if (bar.classList.contains("hihat-pad")){
                     this.hihatAudio.currentTime = 0;
                     this.hihatAudio.play();}
+                if (bar.classList.contains("tom-pad")){
+                    this.tomAudio.currentTime = 0;
+                    this.tomAudio.play();}
             }
         });
 
@@ -66,19 +71,21 @@ class beatMaker{
             this.playBeat.classList.remove("active");
         }
     }
-    changeSound(){
+    changeSound(e){
         const soundName = e.target.name;
         const soundValue = e.target.value;
-        switch(selectionName){
+        switch(soundName){
             case "kick-select":
-                this.kickAudio.src = selectionValue;
+                this.kickAudio.src = soundValue;
                 break;
             case "snare-select":
-                this.snareAudio.src = selectionValue;
+                this.snareAudio.src = soundValue;
                 break;
             case "hihat-select":
-                this.hihatAudio.src = selectionValue;
+                this.hihatAudio.src = soundValue;
                 break;
+            case "tom-select":
+                this.tomAudio.src = soundValue;
         }
     }
 }
@@ -99,7 +106,7 @@ BeatMaker.playBeat.addEventListener('click', function() {
 });
 
 BeatMaker.selects.forEach(select => {
-    select.addEventListener('change', function(){
-        BeatMaker.changeSound();
+    select.addEventListener('change', function(e){
+        BeatMaker.changeSound(e);
     });
 });
