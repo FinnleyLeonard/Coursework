@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-client_id" content="164620853464-4va23rrf1n2hjmv3cbastm0jl1ebdbmh.apps.googleusercontent.com">
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+
+       function postUserLogin() {
+           console.log("Invoked postUserLogin() ");
+
+           var url = "/user/login";
+           var formData = new FormData(document.getElementById('loginForm'));
+
+           fetch(url, {
+               method: "POST",
+               body: formData,
+           }).then(response => {
+               return response.json();                 //now return that promise to JSON
+           }).then(response => {
+               if (response.hasOwnProperty("Error")) {
+                   alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+               } else {
+                   Cookies.set("token", response.token);
+                   Cookies.set("username", response.username);
+                   window.open("index.html", "_self");       //open index.html in same tab
+               }
+           });
+       }
+
+       function postUserRegister() {
+           console.log("Invoked postUserRegister() ");
+
+           var url = "/user/register";
+           var formData = new FormData(document.getElementById('registerForm'));
+
+           fetch(url, {
+               method: "POST",
+               body: formData,
+           }).then(response => {
+               return response.json();                 //now return that promise to JSON
+           }).then(response => {
+               if (response.hasOwnProperty("Error")) {
+                   alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+               } else {
+                   window.open("login.html", "_self");       //open index.html in same tab
+               }
+           });
+       }
+
+
+   </script>
+
+</head>
+<body>
+
+<form id="loginForm">
+    <input type="text" name="username" id="loginUsername">
+    <input type="password" name="password" id="loginPassword">
+</form>
+<button class="button" onclick='postUserLogin();'>LOGIN</button>
+
+<form id="registerForm">
+    <input type="text" name="username" id="RegUsername">
+    <input type="password" name="password" id="RegPassword">
+</form>
+<button class="button" onclick='postUserRegister();'>Register</button>
+</body>
+</html>

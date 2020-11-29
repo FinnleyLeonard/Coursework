@@ -11,7 +11,7 @@ class beatMaker{
     this.currentHihat = './sound/hihat-808.wav';
     this.currentTom = './sound/tom-808.wav';
     this.pointer = 0;
-    this.tempo = 200;
+    this.tempo = 160;
     this.playBeat = document.querySelector('.play');
     this.isPlaying = null;
     this.selects = document.querySelectorAll('select');
@@ -26,7 +26,7 @@ class beatMaker{
         const activeBars = document.querySelectorAll(`.b${step}`);
         //loop the pads
         activeBars.forEach(bar => {
-            bar.style.animation =  `playTrack 0.5s alternate ease 2`;
+            bar.style.animation =  `playTrack 0.3s alternate ease 2`;
             //checks pads active
             if (bar.classList.contains("active")){
                 if (bar.classList.contains("kick-pad")){
