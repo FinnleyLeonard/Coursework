@@ -37,6 +37,16 @@ h1 {
   text-align: center;
   padding: 10px;
 }
+.play {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background: rgb(88, 88, 88);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
 
 .note {
   font-weight: bold;
@@ -85,22 +95,22 @@ h1 {
     cursor: pointer;
     background: #936cca
 }
- .kick-track, .snare-track, .hihat-track, .tom-track{
+.kick-track, .snare-track, .hihat-track, .tom-track{
     display:flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 80px;
 
- }
- .kick, .snare, .hihat, .tom{
-     display:flex;
- }
+}
+.kick, .snare, .hihat, .tom{
+    display:flex;
+}
 
 .controls {
-  justify-content: space-between;
-  align-items: center;
+    justify-content: space-between;
+    align-items: center;
     width: 250px;
-  margin: 0px;
+    margin: 0px;
 }
 
 .controls button {
@@ -128,8 +138,35 @@ h1 {
     background: #3e2f52
 }
 select {
-  padding: 1rem;
-  font-size: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.mute.active {
+    background: rgb(182, 182, 182);
+}
+
+.tempo {
+  margin: 48px;
+  width: 16px;
+}
+
+.tempo-slider {
+  text-align:center
+  padding:3px;
+  -webkit-appearance: none;
+  margin: 16px 0px;
+  width: 320px;
+  position: relative;
+  background: rgb(88, 88, 88);
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.tempo p{
+  margin: 32px;
+  font-size: 24px;
+  tet-align: center;
 }
 
 @keyframes playTrack {

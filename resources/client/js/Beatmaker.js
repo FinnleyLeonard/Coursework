@@ -15,6 +15,8 @@ class beatMaker{
     this.playBeat = document.querySelector('.play');
     this.isPlaying = null;
     this.selects = document.querySelectorAll('select');
+    this.mute = document.querySelectorAll('.mute');
+    this.tempoSlider = document.querySelector('.tempo-slider');
     }
     activePad(){
         this.classList.toggle("active");
@@ -48,7 +50,6 @@ class beatMaker{
         this.pointer++;
     }
     startBeatMaker(){
-        console.log("pog3");
         const interval = (60/this.tempo) * 1000;
         //playing check
         if(!this.isPlaying){
@@ -62,7 +63,6 @@ class beatMaker{
         }
     }
     ppBttnUpdt(){
-        console.log("runnin methord")
         if(!this.isPlaying) {
             this.playBeat.innerText = "Pause";
             this.playBeat.classList.add("active");
@@ -88,6 +88,57 @@ class beatMaker{
                 this.tomAudio.src = soundValue;
         }
     }
+    muteUpt(e){
+        const muteIndex = e.target.getAttribute('data-track');
+        e.target.classList.toggle("active");
+        if(e.target.classList.contains("active")){
+            switch(muteIndex){
+                case "0":
+                    this.kickAudio.volume = 0;
+                    break;
+                case "1":
+                    this.snareAudio.volume = 0;
+                    break;
+
+                case "2":
+                     this.hihatAudio.volume = 0;
+                     break;
+                case "3":
+                     this.tomAudio.volume = 0;
+                     break;
+            }
+        } else {
+            switch(muteIndex){
+                case "0":
+                    this.kickAudio.volume = 1;
+                    break;
+                case "1":
+                    this.snareAudio.volume = 1;
+                    break;
+
+                case "2":
+                     this.hihatAudio.volume = 1;
+                     break;
+                case "3":
+                     this.tomAudio.volume = 1;
+                     break;
+            }
+        }
+
+    }
+    changeTempo(e){
+        const tempoText = document.querySelector(".tempo-nr");
+        this.tempo = e.target.value;
+        tempoText.innerText = e.target.value;
+    }
+    updateTempo(){
+        clearInterval(this.isPlaying);
+        this.isPlaying = null;
+        const isPlaying = document.querySelector('.play');
+        if(isPlaying.classList.contains('active')){
+            this.startBeatMaker();
+        }
+    }
 }
 
 const BeatMaker = new beatMaker();
@@ -110,3 +161,20 @@ BeatMaker.selects.forEach(select => {
         BeatMaker.changeSound(e);
     });
 });
+
+BeatMaker.mute.forEach(select => {
+    select.addEventListener('click', function(e){
+        BeatMaker.muteUpt(e);
+    });
+});
+
+BeatMaker.tempoSlider.addEventListener('input', function(e) {
+    BeatMaker.changeTempo(e);
+});
+
+BeatMaker.tempoSlider.addEventListener('change', function(e) {
+    BeatMaker.updateTempo(e);
+});
+
+
+
