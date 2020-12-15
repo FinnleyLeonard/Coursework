@@ -20,11 +20,9 @@ class beatMaker{
     }
     activePad(){
         this.classList.toggle("active");
-        console.log("pog1")
     }
     repeater(){
-        console.log("pog2");
-        let step = this.pointer % 8;
+        let step = this.pointer % 16;
         const activeBars = document.querySelectorAll(`.b${step}`);
         //loop the pads
         activeBars.forEach(bar => {
