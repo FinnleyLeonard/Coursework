@@ -111,7 +111,8 @@ public class Beat {
                     JSONObject userBeatDetails = new JSONObject();
                     userBeatDetails.put("finalData", finalData);
                     System.out.println(userBeatDetails);
-                    return userBeatDetails.toString();
+                    userBeatDetails.toString();
+                    return "{\"yuh\": \"no userID?\"}";
                 }  else {
                     return "{\"Error\": \"no userID?\"}";
                 }

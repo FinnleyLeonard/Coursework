@@ -182,7 +182,8 @@ class beatMaker{
     displayUserBeats(){
         var userBeatData = [];
         var currentToken = readCookie("token");
-        console.log(postBeatGet(currentToken));
+        postBeatGet(currentToken);
+        console.log(readCookie("saveData"));
     }
 }
 
@@ -263,14 +264,13 @@ function postBeatGet(currentToken) {
    fetch(url, {
        method: "GET",
    }).then(response => {
-       alert(JSON.stringify(response));
        return response.json;                //now return that promise to JSON
    }).then(response => {
        if (response.hasOwnProperty("Error")) {
            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
        } else {
-            Cookies.set("fetchBeatData", response.fetchData);
-            console.log("all data retrieved");
+            Cookies.set("fetchBeatData", response);
+            console.log(JSON.stringify(response.json));
        }
    });
 }

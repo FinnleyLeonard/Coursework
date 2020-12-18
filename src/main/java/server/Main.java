@@ -1,3 +1,4 @@
+
 package server;
 
 import org.eclipse.jetty.server.Server;
@@ -19,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        openDatabase("beatmaker.db");                     //connect to our database file, when you stop the server the connection to the database
+        openDatabase("DietTracker.db");                     //connect to our database file, when you stop the server the connection to the database
         // is closed and you can access it through SQLite Studio
 
         ResourceConfig config = new ResourceConfig();       // prepare our Jersey Servlet, 'Servlet' is a Java program that runs on a Java-enabled web servers.
