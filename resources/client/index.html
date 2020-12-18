@@ -8,14 +8,18 @@
     <script src="https://unpkg.com/tone"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
     <link rel="stylesheet" href="./css/stylesheet.css" />
   </head>
   <h1><a href='http://localhost:8081/client/login.html'>Baked Beats init</a></h1>
+
+
+
     <div class="sequencer">
       <div class="kick-track">
         <div class="controls">
           <h1>Kick</h1>
-          <button data-track="0" class="kick-mute">
+          <button data-track="0" class="mute kick-volume">
             <i class="fas fa-volume-mute"></i>
           </button>
           <select name="kick-select" id="mute kick-volume">
@@ -45,22 +49,22 @@
           </select>
         </div>
           <div class="kick">
-            <div class="pad kick-pad b0"></div>
-            <div class="pad kick-pad b1"></div>
-            <div class="pad kick-pad b2"></div>
-            <div class="pad kick-pad b3"></div>
-            <div class="pad kick-pad b4"></div>
-            <div class="pad kick-pad b5"></div>
-            <div class="pad kick-pad b6"></div>
-            <div class="pad kick-pad b7"></div>
-              <div class="pad kick-pad b8"></div>
-              <div class="pad kick-pad b9"></div>
-              <div class="pad kick-pad b10"></div>
-              <div class="pad kick-pad b11"></div>
-              <div class="pad kick-pad b12"></div>
-              <div class="pad kick-pad b13"></div>
-              <div class="pad kick-pad b14"></div>
-              <div class="pad kick-pad b15"></div>
+            <div class="pad kick-pad b0">0</div>
+            <div class="pad kick-pad b1">1</div>
+            <div class="pad kick-pad b2">2</div>
+            <div class="pad kick-pad b3">3</div>
+            <div class="pad kick-pad b4">4</div>
+            <div class="pad kick-pad b5">5</div>
+            <div class="pad kick-pad b6">6</div>
+            <div class="pad kick-pad b7">7</div>
+              <div class="pad kick-pad b8">8</div>
+              <div class="pad kick-pad b9">9</div>
+              <div class="pad kick-pad b10">10</div>
+              <div class="pad kick-pad b11">11</div>
+              <div class="pad kick-pad b12">12</div>
+              <div class="pad kick-pad b13">13</div>
+              <div class="pad kick-pad b14">14</div>
+              <div class="pad kick-pad b15">15</div>
           </div>
       </div>
 
@@ -95,22 +99,22 @@
           </select>
         </div>
         <div class="snare">
-          <div class="pad snare-pad b0"></div>
-          <div class="pad snare-pad b1"></div>
-          <div class="pad snare-pad b2"></div>
-          <div class="pad snare-pad b3"></div>
-          <div class="pad snare-pad b4"></div>
-          <div class="pad snare-pad b5"></div>
-          <div class="pad snare-pad b6"></div>
-          <div class="pad snare-pad b7"></div>
-            <div class="pad snare-pad b8"></div>
-            <div class="pad snare-pad b9"></div>
-            <div class="pad snare-pad b10"></div>
-            <div class="pad snare-pad b11"></div>
-            <div class="pad snare-pad b12"></div>
-            <div class="pad snare-pad b13"></div>
-            <div class="pad snare-pad b14"></div>
-            <div class="pad snare-pad b15"></div>
+          <div class="pad snare-pad b0">0</div>
+          <div class="pad snare-pad b1">1</div>
+          <div class="pad snare-pad b2">2</div>
+          <div class="pad snare-pad b3">3</div>
+          <div class="pad snare-pad b4">4</div>
+          <div class="pad snare-pad b5">5</div>
+          <div class="pad snare-pad b6">6</div>
+          <div class="pad snare-pad b7">7</div>
+            <div class="pad snare-pad b8">8</div>
+            <div class="pad snare-pad b9">9</div>
+            <div class="pad snare-pad b10">10</div>
+            <div class="pad snare-pad b11">11</div>
+            <div class="pad snare-pad b12">12</div>
+            <div class="pad snare-pad b13">13</div>
+            <div class="pad snare-pad b14">14</div>
+            <div class="pad snare-pad b15">15</div>
 
         </div>
       </div>
@@ -135,22 +139,22 @@
                 </select>
             </div>
             <div class="hihat">
-                <div class="pad hihat-pad b0"></div>
-                <div class="pad hihat-pad b1"></div>
-                <div class="pad hihat-pad b2"></div>
-                <div class="pad hihat-pad b3"></div>
-                <div class="pad hihat-pad b4"></div>
-                <div class="pad hihat-pad b5"></div>
-                <div class="pad hihat-pad b6"></div>
-                <div class="pad hihat-pad b7"></div>
-                <div class="pad hihat-pad b8"></div>
-                <div class="pad hihat-pad b9"></div>
-                <div class="pad hihat-pad b10"></div>
-                <div class="pad hihat-pad b11"></div>
-                <div class="pad hihat-pad b12"></div>
-                <div class="pad hihat-pad b13"></div>
-                <div class="pad hihat-pad b14"></div>
-                <div class="pad hihat-pad b15"></div>
+                <div class="pad hihat-pad b0">0</div>
+                <div class="pad hihat-pad b1">1</div>
+                <div class="pad hihat-pad b2">2</div>
+                <div class="pad hihat-pad b3">3</div>
+                <div class="pad hihat-pad b4">4</div>
+                <div class="pad hihat-pad b5">5</div>
+                <div class="pad hihat-pad b6">6</div>
+                <div class="pad hihat-pad b7">7</div>
+                <div class="pad hihat-pad b8">8</div>
+                <div class="pad hihat-pad b9">9</div>
+                <div class="pad hihat-pad b10">10</div>
+                <div class="pad hihat-pad b11">11</div>
+                <div class="pad hihat-pad b12">12</div>
+                <div class="pad hihat-pad b13">13</div>
+                <div class="pad hihat-pad b14">14</div>
+                <div class="pad hihat-pad b15">15</div>
             </div>
         </div>
       <div class="tom-track">
@@ -173,31 +177,42 @@
           </select>
         </div>
         <div class="tom">
-          <div class="pad tom-pad b0"></div>
-            <div class="pad tom-pad b1"></div>
-            <div class="pad tom-pad b2"></div>
-            <div class="pad tom-pad b3"></div>
-            <div class="pad tom-pad b4"></div>
-            <div class="pad tom-pad b5"></div>
-            <div class="pad tom-pad b6"></div>
-            <div class="pad tom-pad b7"></div>
-            <div class="pad tom-pad b8"></div>
-            <div class="pad tom-pad b9"></div>
-            <div class="pad tom-pad b10"></div>
-            <div class="pad tom-pad b11"></div>
-            <div class="pad tom-pad b12"></div>
-            <div class="pad tom-pad b13"></div>
-            <div class="pad tom-pad b14"></div>
-            <div class="pad tom-pad b15"></div>
+          <div class="pad tom-pad b0">0</div>
+            <div class="pad tom-pad b1">1</div>
+            <div class="pad tom-pad b2">2</div>
+            <div class="pad tom-pad b3">3</div>
+            <div class="pad tom-pad b4">4</div>
+            <div class="pad tom-pad b5">5</div>
+            <div class="pad tom-pad b6">6</div>
+            <div class="pad tom-pad b7">7</div>
+            <div class="pad tom-pad b8">8</div>
+            <div class="pad tom-pad b9">9</div>
+            <div class="pad tom-pad b10">10</div>
+            <div class="pad tom-pad b11">11</div>
+            <div class="pad tom-pad b12">12</div>
+            <div class="pad tom-pad b13">13</div>
+            <div class="pad tom-pad b14">14</div>
+            <div class="pad tom-pad b15">15</div>
         </div>
       </div>
 
         <button class="play">Play</button>
+        <button class="save"><i class="far fa-save"></i></button>
+        <button class="beatGet"><i class="far fa-file"></i></button>
+        <button data-modal-target="#modal">Open Modal</button>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Beat data</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body"> beat data</div>
+        </div>
+        <div id="overlay"></div>
         <div class="tempo">
             <input type="range" class="tempo-slider" max="300" min="20" value="160">
             <p>Tempo: <span class="tempo-nr">160</span></p>
-
         </div>
+
 
 
     </div>
@@ -208,6 +223,7 @@
     <div id="piano"></div>
     <script type="text/javascript" src="./js/Piana.js"></script>
     <script type="text/javascript" src="./js/Beatmaker.js"></script>
+    <script type="text/javascript" src="./js/popUp.js"></script>
 
 
 

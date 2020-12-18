@@ -1,4 +1,6 @@
 //makes drumkit class to store attributes of the player
+
+
 class beatMaker{
     constructor(){
     this.pads = document.querySelectorAll('.pad');
@@ -13,6 +15,8 @@ class beatMaker{
     this.pointer = 0;
     this.tempo = 160;
     this.playBeat = document.querySelector('.play');
+    this.playSave = document.querySelector('.save');
+    this.playData = document.querySelector('.beatGet');
     this.isPlaying = null;
     this.selects = document.querySelectorAll('select');
     this.mute = document.querySelectorAll('.mute');
@@ -48,6 +52,7 @@ class beatMaker{
         this.pointer++;
     }
     startBeatMaker(){
+
         const interval = (60/this.tempo) * 1000;
         //playing check
         if(!this.isPlaying){
@@ -84,6 +89,7 @@ class beatMaker{
                 break;
             case "tom-select":
                 this.tomAudio.src = soundValue;
+                break;
         }
     }
     muteUpt(e){
@@ -137,6 +143,47 @@ class beatMaker{
             this.startBeatMaker();
         }
     }
+    saveBttn(){
+        const allActiveBars = document.querySelectorAll('.active');
+        var kickOrder =0;
+        var snareOrder =0;
+        var hihatOrder =0;
+        var tomOrder =0;
+        var beatName = prompt("Please Beat Name:", "Untitled");
+         if (beatName== null || beatName == "") {
+            return null;
+          }
+        for (var i = 0; i < allActiveBars.length; i++) {
+            console.log(parseInt(allActiveBars[i].innerText) + " " + allActiveBars[i].className.split(/\s+/).slice(1,2))
+            if (allActiveBars[i].className.split(/\s+/).slice(1,2) == "kick-pad"){
+                kickOrder += 2 ** parseInt(allActiveBars[i].innerText);
+            } else if (allActiveBars[i].className.split(/\s+/).slice(1,2) == "snare-pad"){
+                snareOrder += 2 ** parseInt(allActiveBars[i].innerText);
+            } else if (allActiveBars[i].className.split(/\s+/).slice(1,2) == "hihat-pad"){
+                hihatOrder += 2 ** parseInt(allActiveBars[i].innerText);
+            } else if (allActiveBars[i].className.split(/\s+/).slice(1,2) == "tom-pad"){
+                tomOrder += 2 ** parseInt(allActiveBars[i].innerText);
+            }
+
+        }
+        console.log(kickOrder + ' ' + snareOrder + ' ' + hihatOrder + ' ' + tomOrder);
+        var currentToken = readCookie("token");
+        var saveData = [this.currentKick, kickOrder, this.currentSnare, snareOrder,this.currentHihat, hihatOrder, this.currentTom, tomOrder, this.tempo, beatName];
+        console.log((String)(saveData))
+        Cookies.set("saveData", (String)(saveData));
+
+
+        currentToken = readCookie("token")
+
+
+        postBeatSave(saveData, currentToken);
+    }
+
+    displayUserBeats(){
+        var userBeatData = [];
+        var currentToken = readCookie("token");
+        console.log(postBeatGet(currentToken));
+    }
 }
 
 const BeatMaker = new beatMaker();
@@ -146,12 +193,18 @@ const BeatMaker = new beatMaker();
 BeatMaker.pads.forEach(pad => {
   pad.addEventListener('click', BeatMaker.activePad);
   pad.addEventListener('animationend', function() {this.style.animation = ""});
-  console.log("pog4");
 });
 BeatMaker.playBeat.addEventListener('click', function() {
   BeatMaker.ppBttnUpdt();
   BeatMaker.startBeatMaker();
-  console.log("pog5");
+});
+
+BeatMaker.playSave.addEventListener('click', function() {
+  BeatMaker.saveBttn();
+});
+
+BeatMaker.playData.addEventListener('click', function() {
+  BeatMaker.displayUserBeats();
 });
 
 BeatMaker.selects.forEach(select => {
@@ -173,6 +226,56 @@ BeatMaker.tempoSlider.addEventListener('input', function(e) {
 BeatMaker.tempoSlider.addEventListener('change', function(e) {
     BeatMaker.updateTempo(e);
 });
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function postBeatSave(saveData, currentToken) {
+   console.log("Invoked postBeatSave() ");
+
+   var url = "/beat/save";
+
+   fetch(url, {
+       method: "POST",
+       body: saveData, currentToken,
+   }).then(response => {
+       return response.json();                 //now return that promise to JSON
+   }).then(response => {
+       if (response.hasOwnProperty("Error")) {
+           alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+       } else {
+           console.log("done");       //open index.html in same tab
+       }
+   });
+}
+function postBeatGet(currentToken) {
+   console.log("Invoked postBeatGet() ");
+
+   var url = "/beat/get";
+   fetch(url, {
+       method: "GET",
+   }).then(response => {
+       alert(JSON.stringify(response));
+       return response.json;                //now return that promise to JSON
+   }).then(response => {
+       if (response.hasOwnProperty("Error")) {
+           alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+       } else {
+            Cookies.set("fetchBeatData", response.fetchData);
+            console.log("all data retrieved");
+       }
+   });
+}
+
+
 
 
 
