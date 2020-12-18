@@ -111,12 +111,12 @@ public class Beat {
                     JSONObject userBeatDetails = new JSONObject();
                     userBeatDetails.put("finalData", finalData);
                     System.out.println(userBeatDetails);
-                    userBeatDetails.toString();
-                    return "{\"yuh\": \"no userID?\"}";
+
+                    return userBeatDetails.toString();
                 }  else {
                     return "{\"Error\": \"no userID?\"}";
                 }
-            } else {return "{\"Error\": \"bad token\"}";}
+            } else {return "{\"Error\": \"Please login\"}";}
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage() + "    " + exception.getCause() + User.validToken(token));
             return "{\"Error\": \"Unable to save\"}";

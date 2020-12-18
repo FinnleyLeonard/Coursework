@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0>
-    <meta charset="utf-8" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Beat Maker</title>
     <!-- Include tone.js library -->
     <script src="https://unpkg.com/tone"></script>
@@ -22,7 +23,7 @@
           <button data-track="0" class="mute kick-volume">
             <i class="fas fa-volume-mute"></i>
           </button>
-          <select name="kick-select" id="mute kick-volume">
+          <select name="kick-select" id="kick-select">
               <option value="./sound/kick-808.wav">808 Kick</option>
               <option value="./sound/kick-acoustic01.wav">Acoustic 1 Kick</option>
               <option value="./sound/kick-big.wav">Classic Kick</option>
@@ -209,17 +210,17 @@
         </div>
         <div id="overlay"></div>
         <div class="tempo">
-            <input type="range" class="tempo-slider" max="300" min="20" value="160">
+            <input id="tslider" type="range" class="tempo-slider" max="300" min="20" value="160">
             <p>Tempo: <span class="tempo-nr">160</span></p>
         </div>
 
 
 
     </div>
-    <audio class="kick-sound" src="./sound/kick-808.wav"></audio>
-    <audio class="snare-sound" src="./sound/snare-808.wav"></audio>
-    <audio class="hihat-sound" src="./sound/hihat-808.wav"></audio>
-    <audio class="tom-sound" src="./sound/tom-808.wav"></audio>
+    <audio id="ks" class="kick-sound" src="./sound/kick-808.wav"></audio>
+    <audio id="ss" class="snare-sound" src="./sound/snare-808.wav"></audio>
+    <audio id="hs" class="hihat-sound" src="./sound/hihat-808.wav"></audio>
+    <audio  id="ts"class="tom-sound" src="./sound/tom-808.wav"></audio>
     <div id="piano"></div>
     <script type="text/javascript" src="./js/Piana.js"></script>
     <script type="text/javascript" src="./js/Beatmaker.js"></script>

@@ -166,9 +166,11 @@ class beatMaker{
             }
 
         }
+
         console.log(kickOrder + ' ' + snareOrder + ' ' + hihatOrder + ' ' + tomOrder);
         var currentToken = readCookie("token");
-        var saveData = [this.currentKick, kickOrder, this.currentSnare, snareOrder,this.currentHihat, hihatOrder, this.currentTom, tomOrder, this.tempo, beatName];
+
+        var saveData = [document.getElementById('ks').getAttribute('src'), kickOrder, document.getElementById('ss').getAttribute('src'), snareOrder, document.getElementById('hs').getAttribute('src'), hihatOrder, document.getElementById('ts').getAttribute('src'), tomOrder, document.querySelector(".tempo-nr").innerText, beatName];
         console.log((String)(saveData))
         Cookies.set("saveData", (String)(saveData));
 
@@ -180,11 +182,57 @@ class beatMaker{
     }
 
     displayUserBeats(){
-        var userBeatData = [];
+        var userBeatData;
         var currentToken = readCookie("token");
+        var tempPromt;
+        var beatDataSet = []
+        var retrievedBeatData = [];
+
         postBeatGet(currentToken);
-        console.log(readCookie("saveData"));
+
+        userBeatData = readCookie("fetchBeatData")
+        userBeatData = userBeatData.substring(18);
+        userBeatData = userBeatData.replace(/%22/g, "\"");
+        userBeatData = userBeatData.replace(/%2C%20/g, "\",\"");
+        userBeatData = userBeatData.replace(/%2C%/g, "\",");
+        userBeatData = userBeatData.replace(/%2C/g, ",");
+         userBeatData = userBeatData.replace(/%2520/g, " ");
+         userBeatData = userBeatData.substring(0, userBeatData.length - 2);
+         var beatDataSet = JSON.parse("[" + userBeatData + "]");
+         var beatNumber = prompt("Enter number");
+         if (beatNumber == null || beatNumber == "" || parseInt(beatNumber)-1 < 0) {
+            return null;
+         }
+
+        var retrievedBeatData = Object.values(beatDataSet[parseInt(beatNumber)-1])
+        console.log(retrievedBeatData);
+
+        console.log(typeof document.querySelectorAll('.active'));
+        this.kickAudio.src = retrievedBeatData[0];
+        $('#kick-select').val(retrievedBeatData[0]);
+        this.snareAudio.src = retrievedBeatData[2];
+        $('#snare-select').val(retrievedBeatData[2]);
+        this.hihatAudio.src = retrievedBeatData[4];
+        $('#hihat-select').val(retrievedBeatData[4]);
+        this.tomAudio.src = retrievedBeatData[6];
+        $('#tom-select').val(retrievedBeatData[6]);
+        this.tempo = parseInt(retrievedBeatData[8]);
+        document.querySelector(".tempo-nr").innerText = retrievedBeatData[8];
+        $('tslider').val(retrievedBeatData[8]);
+        BeatMaker.updateTempo();
+        var kickB = dec2bin(parseInt(retrievedBeatData[1]));
+        var snareB = dec2bin(parseInt(retrievedBeatData[3]));
+        var tomB = dec2bin(parseInt(retrievedBeatData[5]));
+        var hihatB = dec2bin(parseInt(retrievedBeatData[7]));
+        for (var i=0; i < kickB.length; i++){
+            if (kickB[i] == "1") {
+                document.getElementById(`.kp${i}`).classList.toggle("active");
+            }
+        }
+
+
     }
+
 }
 
 const BeatMaker = new beatMaker();
@@ -264,17 +312,19 @@ function postBeatGet(currentToken) {
    fetch(url, {
        method: "GET",
    }).then(response => {
-       return response.json;                //now return that promise to JSON
+       return response.json();                //now return that promise to JSON
    }).then(response => {
        if (response.hasOwnProperty("Error")) {
            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
        } else {
             Cookies.set("fetchBeatData", response);
-            console.log(JSON.stringify(response.json));
        }
    });
 }
 
+function dec2bin(dec){
+    return (dec >>> 0).toString(2);
+}
 
 
 
