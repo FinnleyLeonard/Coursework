@@ -30,8 +30,8 @@ svg {
 
 .pianoinner {
   display: flex;
-  width: 100%;
-  flex-wrap: nowrap;
+  width: 100vw;
+  flex-wrap: wrap;
 }
 
 .pianoinner > div {
@@ -44,68 +44,91 @@ svg {
   padding: 10px;
 }
 .play {
-  display: flex; /* allows it too fall inline with other bits of the code */
-  margin-top: 3rem;
-  flex-wrap: nowrap;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin: 0 15px;
+  width: 300px;
+    margin: 30px auto 0 auto;
+    border-radius: 4px;
   font-size: 16px;
   text-align: center;
-  padding: 1.5rem 2.5rem;
+    padding: 10px 20px;
     background: rgb(88, 88, 88);
     color: white;
     border: none;
     cursor: pointer;
-    text.align: center;
-    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.save {
-  padding: 1vw 2vw;
+.save,
+.beatGet{
+  padding: 10px 25px;
   background: rgb(88, 88, 88);
   color: white;
   border: none;
   cursor: pointer;
-  text.align: center;
-  margin-top: 3rem;
+  text-align: center;
     display: flex;
-
-}
-.beatGet {
-  padding: 1vw 2vw;
-  background: rgb(88, 88, 88);
-  color: white;
-  border: none;
-  cursor: pointer;
-  text.align: center;
-  margin-top: 3rem;
+    font-size: 12px;
+    width: 200px;
     display: flex;
-
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
 }
+
+.save i,
+.beatGet i {
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.saveButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.loginBttn,
 .regBttn {
-  padding: 1vw 2vw;
+  padding: 10px;
   background: rgb(88, 88, 88);
   color: white;
   border: none;
   cursor: pointer;
-  text.align: center;
-  margin-top: 3rem;
+  text-align: center;
+    font-size: 13px;
     display: flex;
-
 }
 
-.loginBttn {
-  padding: 1vw 2vw;
-  background: rgb(88, 88, 88);
-  color: white;
-  border: none;
-  cursor: pointer;
-  text.align: center;
-  margin-top: 3rem;
-    display: flex;
+.regBttn {
+    margin-right: 15px;
+}
 
+.loginBttn i,
+.regBttn i{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: aliceblue;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+header > h1 {
+    font-size: 25px;
+}
+
+header > div {
+    display: flex;
+    justify-content: space-between;
 }
 
 .note {
@@ -124,6 +147,10 @@ svg {
     align-items: center;
     justify-content: center;
 
+}
+
+#piano {
+    margin-top: 50px;
 }
 
 .kick-pad,
@@ -157,7 +184,7 @@ svg {
     align-items: center;
     width: 70%;
     justify-content: space-between;
-    margin-top: 3rem;
+    margin-top: 20px;
     align-self: center;
 
 }
@@ -170,7 +197,7 @@ svg {
     justify-content: space-between;
     align-items: center;
     flex: 1;
-    margin: 0rem 2rem;
+    margin-right: 10px;
 }
 
 .controls button {
@@ -216,7 +243,7 @@ select { /* selection box */
 }
 
 .tempo { /* tempo button for the slider */
-  margin: 3rem;
+  margin: 20px auto 0 auto;
   width: 30%;
 }
 
@@ -249,4 +276,15 @@ select { /* selection box */
   to {
     transform: scale(1.2);
   }
+}
+
+
+@media (max-width: 1120px) {
+    .controls select {
+        width: 100px;
+    }
+
+    .controls h1 {
+        width: 35px;
+    }
 }
