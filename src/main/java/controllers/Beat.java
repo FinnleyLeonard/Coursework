@@ -100,7 +100,6 @@ public class Beat {
                         rowData.add(Integer.toString(beatGetResults.getInt("tomButtons")));
                         rowData.add(Integer.toString(beatGetResults.getInt("tempo")));
                         rowData.add(beatGetResults.getString("beatName"));
-                        System.out.println("poogaaasss");
                         finalData.get(rowCount).add(String.join(", ", rowData));
                         System.out.println(finalData.toString());
                         rowCount ++;

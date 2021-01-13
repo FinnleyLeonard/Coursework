@@ -74,7 +74,7 @@ let playNote = (note, length) => {
 };
 
 // Event listener for keydown to play note
-document.addEventListener("keyup", async (e) => {
+document.addEventListener("keydown", async (e) => {
   let currentNote = keyNotes.find((a) => a.ids.includes(e.keyCode));
   if (currentNote !== undefined && currentNote.note !== "") {
     playNote(

@@ -1,26 +1,31 @@
 
-/* other colours to be used for pads  #936cca  #9059c4 */
 * {
+/* global css*/
   font-family: "Inter";
   padding:0;
   margin:0;
   box-sizing: border-box;
     font-size: 0.9vw;
 }
+
 i,
 svg {
+/* font awesome icons */
   pointer-events: none;
 }
+.controls select {
+  width: 210px;
+}
 
-
-h1 {
+.controls h1 {
+    width: 45px;
   padding: 0.5vw;
   margin: 0.5vw 0.5vw 0.5vw 0.5vw;
   color: #222;
 }
 .pressed {
   background: rgba(20, 7, 117, 0.2);
-  transition-duration: 0.5s;
+  transition-duration: 0.5s; /* time for animation when pressed */
 }
 
 .pianoinner {
@@ -39,20 +44,48 @@ h1 {
   padding: 10px;
 }
 .play {
-  display: flex;
-  width: 80px;
+  display: flex; /* allows it too fall inline with other bits of the code */
+  margin-top: 3rem;
   flex-wrap: nowrap;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  font-size: 16px;
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+    background: rgb(88, 88, 88);
+    color: white;
+    border: none;
+    cursor: pointer;
+    text.align: center;
+    margin: 0 auto;
+}
+
+.save {
   padding: 1vw 2vw;
   background: rgb(88, 88, 88);
   color: white;
   border: none;
   cursor: pointer;
+  text.align: center;
   margin-top: 3rem;
-}
+    display: flex;
 
-.save {
+}
+.beatGet {
   padding: 1vw 2vw;
-  width: 80px;
+  background: rgb(88, 88, 88);
+  color: white;
+  border: none;
+  cursor: pointer;
+  text.align: center;
+  margin-top: 3rem;
+    display: flex;
+
+}
+.regBttn {
+  padding: 1vw 2vw;
   background: rgb(88, 88, 88);
   color: white;
   border: none;
@@ -63,6 +96,17 @@ h1 {
 
 }
 
+.loginBttn {
+  padding: 1vw 2vw;
+  background: rgb(88, 88, 88);
+  color: white;
+  border: none;
+  cursor: pointer;
+  text.align: center;
+  margin-top: 3rem;
+    display: flex;
+
+}
 
 .note {
   font-weight: bold;
@@ -76,52 +120,45 @@ h1 {
 }
 
 .sequencer {
-  display: flex;
-  height: 75%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 75%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad,
+.tom-pad{
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem 0.5rem;
+  cursor: pointer;
 }
 
 .kick-pad{
-display: flex;
-    width:80px;
-    height:80px;
-    margin: 16px 8px;
-    cursor: pointer;
-    background: #8abadb
+    background: #8abadb;
+    color: #8abadb;
 }
 .snare-pad{
-display: flex;
-    width:80px;
-    height:80px;
-    margin: 16px 8px;
-    cursor: pointer;
-    background: #869fdb
+    background: #869fdb;
+    color: #869fdb;
 }
 .hihat-pad{
-display: flex;
-    width: 80px;
-    height: 80px;
-    margin: 16px 8px;
-    cursor: pointer;
-    background: #8386d3
+    background: #8386d3;
+    color: #8386d3;
 }
 .tom-pad{
-display: flex;
-    width: 80px;
-    height: 80px;
-    margin: 16px 8px;
-    cursor: pointer;
-    background: #936cca
+    background: #936cca;
+    color: #936cca;
 }
 .kick-track, .snare-track, .hihat-track, .tom-track{
-    display:flex;
+    display: flex;
     align-items: center;
+    width: 70%;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 3rem;
+    align-self: center;
 
 }
 .kick, .snare, .hihat, .tom{
@@ -129,18 +166,22 @@ display: flex;
 }
 
 .controls {
-display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 250px;
-    margin: 0px;
+    flex: 1;
+    margin: 0rem 2rem;
 }
 
 .controls button {
-display: flex;
-    padding:2px;
-    background: #e3e3e3;
+    display: flex;
+    padding: 1rem;
+    border: none;
+    background: rgb(88, 88, 88);
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
+    margin:1rem;
     transition: all 1s ease;
 }
 
@@ -148,125 +189,64 @@ display: flex;
     transition: all 0.5s ease;
 }
 .kick-pad.active{
-
-    background: #6a8da5
+    background: #6a8da5; /* changes colour when pressed */
+    color: #6a8da5;
 }
 .snare-pad.active{
-
-    background: #6a7ca7
+    background: #6a7ca7;
+    color: #6a7ca7;
 }
 .hihat-pad.active{
-    background: #515385
+    background: #515385;
+    color: #515385;
 }
 .tom-pad.active{
-    background: #3e2f52
+    background: #3e2f52;
+    color: #3e2f52;
 }
-select {
-display: flex;
+select { /* selection box */
+    display: flex;
     padding: 1rem;
     font-size: 1rem;
 }
 
-.mute.active {
-display: flex;
+.mute.active { /* changes mute when its selected */
     background: rgb(182, 182, 182);
+    margin = 1rem;
 }
 
-.tempo {
-display: flex;
-  margin: 48px;
-  width: 16px;
+.tempo { /* tempo button for the slider */
+  margin: 3rem;
+  width: 30%;
 }
 
 .tempo-slider {
-display: flex;
-  text-align:center;
-  padding:3px;
+    /* tempo slider */
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  padding: 0.2rem;
   -webkit-appearance: none;
-  margin: 16px 0px;
-  width: 320px;
+  margin: 1rem 0rem;
+  width: 100%;
   position: relative;
   background: rgb(88, 88, 88);
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 
 .tempo p{
-  margin: 32px;
-  font-size: 24px;
-  tet-align: center;
+/* tempo counter */
+  font-size: 1.5rem;
+  margin: 2rem;
+  text-align: center;
 }
 
-@keyframes playTrack {
+@keyframes playTrack { /* makes the pads animated when they are selected*/
   from {
     transform: scale(1);
   }
   to {
     transform: scale(1.2);
   }
-}
-
-*, *::after, *::before {
-  box-sizing: border-box;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
-  z-index: 10;
-  background-color: white;
-  width: 500px;
-  max-width: 80%;
-}
-
-.modal.active {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid black;
-}
-
-.modal-header .title {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.modal-header .close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.modal-body {
-  padding: 10px 15px;
-}
-
-#overlay {
-  position: fixed;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  pointer-events: none;
-}
-
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
 }

@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+      <!--Imports scripts - jQuery and sweetAlert2-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Beat Maker</title>
     <!-- Include tone.js library -->
     <script src="https://unpkg.com/tone"></script>
+      <!-- allows for custom icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+      <!--adds google fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+      <!--allows for js cookies-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
     <link rel="stylesheet" href="./css/stylesheet.css" />
   </head>
-  <h1><a href='http://localhost:8081/client/login.html'>Baked Beats init</a></h1>
-
-
-
+  <body>
+  <h1><a>Baked Beats init</a></h1>
+  <!-- login and register buttons -->
+  <button class="regBttn"><i class="fas fa-sign-in-alt"></i></button>
+  <button class="loginBttn"><i class="fas fa-sign-out-alt"></i></button>
+  <!--  defines the sequencer used to contain all the beat tracks-->
     <div class="sequencer">
       <div class="kick-track">
+          <!--defines kick track-->
         <div class="controls">
           <h1>Kick</h1>
+            <!--adds mute button -->
           <button data-track="0" class="mute kick-volume">
             <i class="fas fa-volume-mute"></i>
           </button>
+            <!--select drop down for each beat includes its directory -->
           <select name="kick-select" id="kick-select">
               <option value="./sound/kick-808.wav">808 Kick</option>
               <option value="./sound/kick-acoustic01.wav">Acoustic 1 Kick</option>
@@ -49,6 +59,7 @@
               <option value="./sound/kick-zapper.wav">Zapper Kick</option>
           </select>
         </div>
+          <!--all of the pads to select to choose your patterns-->
           <div class="kick">
             <div class="pad kick-pad b0">0</div>
             <div class="pad kick-pad b1">1</div>
@@ -68,7 +79,7 @@
               <div class="pad kick-pad b15">15</div>
           </div>
       </div>
-
+        <!--same as before but using a different instrument-->
       <div class="snare-track">
         <div class="controls">
           <h1>Snare</h1>
@@ -119,7 +130,7 @@
 
         </div>
       </div>
-
+        <!--same as before but using a different instrument-->
         <div class="hihat-track">
             <div class="controls">
                 <h1>Hi-Hat</h1>
@@ -174,7 +185,7 @@
             <option value="./sound/tom-lofi.wav">Lofi Tom</option>
               <option value="./sound/tom-rototom.wav">Rototom Tom</option>
             <option value="./sound/tom-short.wav">Short Tom</option>
-
+              <!--same as before but using a different instrument-->
           </select>
         </div>
         <div class="tom">
@@ -197,19 +208,12 @@
         </div>
       </div>
 
-        <button class="play">Play</button>
-        <button class="save"><i class="far fa-save"></i></button>
-        <button class="beatGet"><i class="far fa-file"></i></button>
-        <button data-modal-target="#modal">Open Modal</button>
-        <div class="modal" id="modal">
-            <div class="modal-header">
-                <div class="title">Beat data</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body"> beat data</div>
-        </div>
-        <div id="overlay"></div>
-        <div class="tempo">
+        <button class="play">Play</button>        <!--button that plays the beat-->
+        <button class="save"><i class="far fa-save"></i></button>         <!--button that saves the beat-->
+        <button class="beatGet"><i class="far fa-file"></i></button>         <!--button that gets the beat-->
+
+
+        <div class="tempo">         <!--tempo slider to choose tempo-->
             <input id="tslider" type="range" class="tempo-slider" max="300" min="20" value="160">
             <p>Tempo: <span class="tempo-nr">160</span></p>
         </div>
@@ -220,7 +224,7 @@
     <audio id="ks" class="kick-sound" src="./sound/kick-808.wav"></audio>
     <audio id="ss" class="snare-sound" src="./sound/snare-808.wav"></audio>
     <audio id="hs" class="hihat-sound" src="./sound/hihat-808.wav"></audio>
-    <audio  id="ts"class="tom-sound" src="./sound/tom-808.wav"></audio>
+    <audio  id="ts" class="tom-sound" src="./sound/tom-808.wav"></audio>
     <div id="piano"></div>
     <script type="text/javascript" src="./js/Piana.js"></script>
     <script type="text/javascript" src="./js/Beatmaker.js"></script>
